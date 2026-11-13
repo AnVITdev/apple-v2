@@ -1,0 +1,19 @@
+{
+  "name": "apple-website-clone-v2",
+  "version": "2.0.0",
+  "description": "Apple Official Website Clone version 2 with modern UI and responsive design",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "apple",
+    "apple-clone",
+    "frontend",
+    "responsive",
+    "ui-clone"
+  ],
+  "author": "",
+  "license": "MIT"
+}
