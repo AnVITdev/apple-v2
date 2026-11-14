@@ -3,7 +3,7 @@ import AppleLogo from './AppleLogo';
 
 export default function SEHero() {
   return (
-    <section id="se" className="bg-[#f5f5f7] text-[#1d1d1f] pt-16 pb-20 px-4 text-center border-t border-gray-200">
+    <section id="se" className="bg-[#f5f5f7] text-[#1d1d1f] pt-16 pb-16 px-4 text-center border-t border-gray-200 overflow-hidden">
       <div className="max-w-[1024px] mx-auto flex flex-col items-center">
         {/* Title */}
         <div className="flex items-center justify-center space-x-2 text-2xl md:text-3xl font-semibold tracking-tight mb-1">
@@ -24,17 +24,17 @@ export default function SEHero() {
         </p>
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
           <span className="text-gray-700 text-sm">Từ 5.999.000đ hoặc 242.000đ/th. trong 24 th.</span>
           <div className="flex items-center gap-3">
             <a
               href="#compare"
-              className="bg-appleBlue hover:bg-appleBlue-hover text-white text-sm px-4 py-2 rounded-full font-normal transition"
+              className="bg-appleBlue hover:bg-appleBlue-hover text-white text-sm px-5 py-2 rounded-full font-normal transition"
             >
               Mua ngay
             </a>
             <a
-              href="#"
+              href="#compare"
               className="text-appleBlue text-sm hover:underline font-normal"
             >
               Tìm hiểu thêm &gt;
@@ -42,30 +42,13 @@ export default function SEHero() {
           </div>
         </div>
 
-        {/* SE Mockup */}
-        <div className="relative w-full max-w-[500px] h-[300px] flex items-center justify-center">
-          <div className="relative z-10 w-[220px] h-[270px] rounded-[48px] bg-white p-3.5 shadow-xl border-4 border-gray-200 transition-transform hover:scale-105 duration-500">
-            {/* Screen */}
-            <div className="w-full h-full rounded-[38px] bg-gradient-to-br from-indigo-50 to-blue-100 flex flex-col justify-between p-4 relative overflow-hidden">
-              <div className="text-right">
-                <span className="text-xs font-semibold text-blue-600">HOẠT ĐỘNG</span>
-              </div>
-              <div className="text-center my-auto">
-                <span className="text-5xl font-light tracking-tight text-gray-900 block">10:09</span>
-                <div className="flex justify-center gap-2 mt-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                </div>
-              </div>
-              <div className="text-center text-xs text-gray-500 font-medium">
-                VÒNG HOẠT ĐỘNG
-              </div>
-            </div>
-
-            {/* Crown */}
-            <div className="absolute right-[-8px] top-[50px] w-2.5 h-12 bg-gray-400 rounded-r-md"></div>
-          </div>
+        {/* Real Product Image for SE */}
+        <div className="relative w-full max-w-[550px] flex items-center justify-center my-6">
+          <img
+            src="/assets/se3.png"
+            alt="Apple Watch SE"
+            className="w-full max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-transform duration-700 hover:scale-105"
+          />
         </div>
       </div>
     </section>
