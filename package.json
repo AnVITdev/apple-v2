@@ -1,19 +1,23 @@
 {
-  "name": "apple-website-clone-v2",
+  "name": "apple-watch-clone",
+  "private": true,
   "version": "2.0.0",
-  "description": "Apple Official Website Clone version 2 with modern UI and responsive design",
-  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [
-    "apple",
-    "apple-clone",
-    "frontend",
-    "responsive",
-    "ui-clone"
-  ],
-  "author": "",
-  "license": "MIT"
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7"
+  }
 }
