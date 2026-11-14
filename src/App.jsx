@@ -1,41 +1,32 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import WatchChapterNav from './components/WatchChapterNav';
-import Series10Hero from './components/Series10Hero';
-import Ultra2Hero from './components/Ultra2Hero';
-import SEHero from './components/SEHero';
-import CompareTable from './components/CompareTable';
-import StudioSection from './components/StudioSection';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar.jsx";
+import Ribbon from "./components/Ribbon.jsx";
+import HeroItem from "./components/HeroItem.jsx";
+import ProductGrid from "./components/ProductGrid.jsx";
+import Entertainment from "./components/Entertainment.jsx";
+import Footer from "./components/Footer.jsx";
+import { HEROES } from "./data/content.js";
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* 1. Global Navbar */}
+    <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* 2. Apple Watch Chapter Navigation (Subnav) */}
-      <WatchChapterNav />
+      <main className="pt-12 tablet:pt-11">
+        <Ribbon />
 
-      {/* 3. Main Product Showcase */}
-      <main className="flex-grow">
-        {/* Apple Watch Series 10 */}
-        <Series10Hero />
+        <div className="space-y-3 bg-white">
+          {HEROES.map((hero, index) => (
+            <HeroItem key={hero.id} item={hero} priority={index === 0} />
+          ))}
+        </div>
 
-        {/* Apple Watch Ultra 2 */}
-        <Ultra2Hero />
+        <div className="mt-3">
+          <ProductGrid />
+        </div>
 
-        {/* Apple Watch SE */}
-        <SEHero />
-
-        {/* Interactive Apple Watch Studio */}
-        <StudioSection />
-
-        {/* Direct Comparison Table */}
-        <CompareTable />
+        <Entertainment />
       </main>
 
-      {/* 4. Apple Global Footer */}
       <Footer />
     </div>
   );

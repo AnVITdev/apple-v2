@@ -1,37 +1,34 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
+    screens: {
+      tablet: "735px",
+      wide: "834px",
+      desktop: "1069px",
+    },
     extend: {
       colors: {
-        appleGray: {
-          surface: '#f5f5f7',
-          darkSurface: '#161617',
-          subtext: '#86868b',
-          border: '#d2d2d7',
-        },
-        appleBlue: {
-          DEFAULT: '#0071e3',
-          hover: '#0077ed',
-          link: '#0066cc',
-        }
+        ink: "#1d1d1f",
+        mist: "#f5f5f7",
+        "apple-blue": "#0071e3",
+        "apple-link": "#0066cc",
       },
       fontFamily: {
-        sf: [
+        sans: [
+          "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
-          "SF Pro Text",
-          "SF Pro Icons",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
-          "sans-serif"
-        ]
-      }
+          "'Segoe UI'",
+          "Roboto",
+          "sans-serif",
+        ],
+      },
+      maxWidth: {
+        content: "1024px",
+        footer: "980px",
+      },
     },
   },
   plugins: [],
-}
+};

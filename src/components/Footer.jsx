@@ -1,90 +1,144 @@
-import React from 'react';
-import AppleLogo from './AppleLogo';
+import { ChevronDown } from "lucide-react";
+import {
+  FOOTER_COLUMNS,
+  FOOTER_NOTES,
+  LEGAL_LINKS,
+} from "../data/content.js";
+
+const linkClass =
+  "inline-block py-[3px] text-[12px] leading-4 text-black/[0.72] transition-colors hover:text-black hover:underline";
+
+function SectionList({ section }) {
+  return (
+    <div className="mb-6 last:mb-0">
+      <h3 className="mb-2 text-[12px] font-normal leading-4 text-black/[0.88]">
+        {section.title}
+      </h3>
+      <ul>
+        {section.links.map((link) => (
+          <li key={link.label}>
+            <a href={link.href} className={linkClass}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function MobileAccordion() {
+  const sections = FOOTER_COLUMNS.flat();
+
+  return (
+    <nav aria-label="Footer" className="tablet:hidden">
+      {sections.map((section) => (
+        <details
+          key={section.title}
+          className="group border-b border-black/10 [&::-webkit-details-marker]:hidden"
+        >
+          <summary className="flex cursor-pointer list-none items-center justify-between py-3 text-[12px] leading-4 text-black/[0.88] [&::-webkit-details-marker]:hidden">
+            {section.title}
+            <ChevronDown
+              className="h-3.5 w-3.5 text-black/40 transition-transform duration-200 group-open:rotate-180"
+              strokeWidth={2}
+            />
+          </summary>
+          <ul className="pb-3 pt-1">
+            {section.links.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className={linkClass}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ))}
+    </nav>
+  );
+}
+
+function DesktopDirectory() {
+  return (
+    <nav aria-label="Footer" className="hidden tablet:flex tablet:gap-0 tablet:pt-5">
+      {FOOTER_COLUMNS.map((column, index) => (
+        <div key={index} className="min-w-0 flex-1 pr-5">
+          {column.map((section) => (
+            <SectionList key={section.title} section={section} />
+          ))}
+        </div>
+      ))}
+    </nav>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f5f5f7] text-[#86868b] text-[12px] leading-relaxed pt-8 pb-12 border-t border-gray-200">
-      <div className="max-w-[1024px] mx-auto px-4">
-        {/* Footnotes */}
-        <div className="space-y-3 pb-8 border-b border-gray-300">
-          <p>
-            * Giá hiển thị là giá bán lẻ đã bao gồm thuế VAT. Phí giao hàng có thể được áp dụng tùy theo điều kiện đặt hàng.
-          </p>
-          <p>
-            1. Thời lượng pin thay đổi tùy theo cách sử dụng và cấu hình. Apple Watch Series 10 có thời lượng pin lên đến 18 giờ với mức sử dụng thông thường và lên đến 36 giờ ở Chế Độ Nguồn Điện Thấp.
-          </p>
-          <p>
-            2. Màn hình OLED góc rộng của Apple Watch Series 10 sáng hơn đến 40% so với thế hệ trước khi nhìn từ các góc nghiêng.
-          </p>
-          <p>
-            3. Apple Watch Ultra 2 có khả năng chống nước ở độ sâu 100 mét theo tiêu chuẩn ISO 22810. Thiết bị có thể được sử dụng khi lặn giải trí với bình dưỡng khí ở độ sâu đến 40 mét.
-          </p>
-          <p>
-            4. Ứng dụng ECG và tính năng thông báo nhịp tim không đều yêu cầu các phiên bản watchOS và iOS mới nhất và không dành cho người dưới 22 tuổi.
-          </p>
+    <footer className="bg-mist text-[12px] leading-4 text-black/[0.56]">
+      <div className="mx-auto max-w-footer px-4 pb-6 tablet:px-6">
+        <div className="border-b border-black/10 py-4">
+          <ul className="space-y-2">
+            {FOOTER_NOTES.map((note) => (
+              <li key={note} className="text-[12px] leading-4">
+                {note}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 py-4 text-gray-600">
-          <AppleLogo className="w-3.5 h-3.5 fill-current" />
-          <span>&gt;</span>
-          <span className="text-[#1d1d1f]">Watch</span>
+        <MobileAccordion />
+        <DesktopDirectory />
+
+        <div className="border-b border-black/10 py-4 text-[12px] leading-4 text-black/[0.72]">
+          More ways to shop:{" "}
+          <a
+            href="https://www.apple.com/retail/"
+            className="text-apple-link underline hover:text-black"
+          >
+            Find an Apple Store
+          </a>{" "}
+          or{" "}
+          <a
+            href="https://www.apple.com/us/shop/goto/otherretailers"
+            className="text-apple-link underline hover:text-black"
+          >
+            other retailer
+          </a>{" "}
+          near you. Or call{" "}
+          <a href="tel:18006927753" className="text-apple-link underline hover:text-black">
+            1-800-MY-APPLE
+          </a>{" "}
+          (1-800-692-7753).
         </div>
 
-        {/* Links Directory */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-6 border-b border-gray-300">
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Khám Phá Watch</h4>
-            <ul className="space-y-1.5">
-              <li><a href="#series-10" className="hover:text-gray-900 hover:underline">Apple Watch Series 10</a></li>
-              <li><a href="#ultra-2" className="hover:text-gray-900 hover:underline">Apple Watch Ultra 2</a></li>
-              <li><a href="#se" className="hover:text-gray-900 hover:underline">Apple Watch SE</a></li>
-              <li><a href="#nike" className="hover:text-gray-900 hover:underline">Apple Watch Nike</a></li>
-              <li><a href="#hermes" className="hover:text-gray-900 hover:underline">Apple Watch Hermès</a></li>
+        <div className="flex flex-col gap-3 py-4 tablet:flex-row tablet:items-center tablet:justify-between">
+          <div className="flex flex-col gap-2 tablet:flex-row tablet:items-center tablet:gap-6">
+            <p className="text-[12px] text-black/[0.56]">
+              Copyright © 2026 Apple Inc. All rights reserved.
+            </p>
+            <ul className="flex flex-wrap gap-x-4 gap-y-1">
+              {LEGAL_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-[12px] text-black/[0.56] hover:text-black hover:underline"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Mua Sắm Đồng Hồ</h4>
-            <ul className="space-y-1.5">
-              <li><a href="#compare" className="hover:text-gray-900 hover:underline">So Sánh Các Mẫu Watch</a></li>
-              <li><a href="#bands" className="hover:text-gray-900 hover:underline">Dây Đeo Apple Watch</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Phụ Kiện Apple Watch</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Apple Watch Studio</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Tài Khoản</h4>
-            <ul className="space-y-1.5">
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Quản Lý Apple ID</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Tài Khoản Apple Store</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">iCloud.com</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Về Apple</h4>
-            <ul className="space-y-1.5">
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Phòng Báo Chí</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Lãnh Đạo Apple</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Cơ Hội Nghề Nghiệp</a></li>
-              <li><a href="#" className="hover:text-gray-900 hover:underline">Đầu Tư</a></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="pt-4 flex flex-col sm:flex-row justify-between items-center text-[11px] gap-2">
-          <p>Bản quyền © 2026 Apple Inc. Bảo lưu mọi quyền.</p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#" className="hover:text-gray-900 hover:underline">Chính Sách Quyền Riêng Tư</a>
-            <a href="#" className="hover:text-gray-900 hover:underline">Điều Khoản Sử Dụng</a>
-            <a href="#" className="hover:text-gray-900 hover:underline">Bán Hàng và Hoàn Tiền</a>
-            <a href="#" className="hover:text-gray-900 hover:underline">Pháp Lý</a>
-          </div>
+          <a
+            href="https://www.apple.com/choose-country-region/"
+            className="whitespace-nowrap text-[12px] text-black/[0.72] hover:text-black hover:underline"
+          >
+            United States
+          </a>
         </div>
       </div>
     </footer>
   );
 }
+
